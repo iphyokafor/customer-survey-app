@@ -1,0 +1,33 @@
+{
+  "name": "customer-survey-app",
+  "version": "1.0.0",
+  "description": "A simple app to get customers feedback",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r esm ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iphyokafor/customer-survey-app.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb"
+  ],
+  "author": "Sandra Okafor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iphyokafor/customer-survey-app/issues"
+  },
+  "homepage": "https://github.com/iphyokafor/customer-survey-app#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.20"
+  }
+}
