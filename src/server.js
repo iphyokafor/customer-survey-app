@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRoute from './routes/authRoute';
+import usersRoute from './routes/userRoute';
 dotenv.config();
 
 const app = express();
@@ -21,6 +23,9 @@ mongoose.connect(
         if (err) throw err;
         else console.log('connected to db!')
     });
+
+app.use('/api/auth', authRoute);
+app.use('/', usersRoute);
 
 const port = process.env.PORT || 7000;
 app.listen(port, () => {
