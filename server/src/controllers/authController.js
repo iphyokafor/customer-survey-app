@@ -6,12 +6,18 @@ import loginValidation from '../validation/loginValidation';
 
 export default {
     register: async(req, res) => {
+        try {
         const { error } = registerValidation(req.body);
-        if (error) return res.status(400).send(error.details[0].message);
+        if (error) return res.status(400).json({
+            success: false,
+            message: error.details[0].message
+        }); 
+        
         const { email } = req.body;
         const emailExist = await User.findOne({ email });
         if (emailExist) {
             return res.status(400).json({
+                success: false,
                 message: 'Email already exists'
             });
         }
@@ -24,46 +30,64 @@ export default {
             lastName: req.body.lastName,
             email: req.body.email,
             password: hashedPassword,
-            role: req.body.role,
         });
 
 
-        try {
+       
             const _savedUser = await user.save();
             const token = jwt.sign({_id: user._id, role: user.role }, process.env.TOKEN_SECRET);
-            res.send({
-                status: 201,
+            res.json({
+                success: true,
                 message: "User successfully registered",
                 _savedUser, 
                 token,
-            });
-
+            })
         } catch (err) {
-            res.status(400).json(err);
+            res.status(400).json({
+                success: false,
+                message: err.message
+            });
         }
     },
 
     login: async(req, res) => {
+        try{
       const { error } = loginValidation(req.body);
-      if (error) return res.status(400).send(error.details[0].message);
+      if (error) return res.status(400).json({
+          success: false,
+          message: error.details[0].message
+    });
 
       const user = await User.findOne({ email: req.body.email });
       if (!user) {
-          return res.status(400).send('Email doesn\'t exist');
+          return res.status(400).json({
+             success: false,
+             message:'Email doesn\'t exist'
+        });
       }
 
       const validPass = await bcrypt.compare(req.body.password, user.password);
       if (!validPass) {
-          return res.status(400).send('Invalid Password');
+          return res.status(400).json({
+              success: false,
+              message: 'Invalid Password'
+            });
       }
 
       const token = jwt.sign({ _id: user._id, role: user.role }, process.env.TOKEN_SECRET);
-      res.header('auth-token', token).send({
+      res.header('auth-token', token).json({
           status: 200,
           token,
           message: 'logged in',
           user
-      });
+      })
+
+    } catch (err) {
+        res.status(400).json({
+            success: false,
+            message: err.message
+        });
+    }
   },
 
 };

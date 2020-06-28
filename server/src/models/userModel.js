@@ -27,8 +27,8 @@ const userSchema = mongoose.Schema({
     },
     role: {
       type: String,
-      role: ['Admin', 'SalesPerson'],
-      default: 'SalesPerson'
+      role: ['admin', 'customer'],
+      default: 'customer'
     }
 }, { timestamps: true });
 

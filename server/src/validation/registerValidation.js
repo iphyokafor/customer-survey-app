@@ -15,8 +15,7 @@ const registerValidation = (data) => {
             .lowercase()
             .required(),
         email: Joi.string()
-            .email()
-            .regex(/\S+@\S+\.\S+/)
+            .email({ minDomainAtoms: 2})
             .min(3)
             .max(100)
             .trim()
@@ -25,9 +24,6 @@ const registerValidation = (data) => {
             .alphanum()
             .min(8)
             .required(),
-        role: Joi.string()
-            .lowercase()
-            .required()
     });
     return Joi.validate(data, schema);
 };

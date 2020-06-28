@@ -23,38 +23,38 @@
               class="tab">Sign Up</label>
             <div class="login-space">
 
-              <div class="login">
-                <div class="group"> <label for="email" class="label">Email</label> <input id="email" type="text"
+              <div id="login-form" class="login">
+                <div class="group"> <label for="email" class="label">Email</label> <input id="login-email" type="text"
                     class="input" placeholder="Enter your email">
                 </div>
 
-                <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password"
-                    class="input" data-type="password" placeholder="Enter your password"> </div>
+                <div class="group"> <label for="pass" class="label">Password</label> <input id="login-password"
+                    type="password" class="input" data-type="password" placeholder="Enter your password"> </div>
 
                 <div class="group"> <input id="check" type="checkbox" class="check" checked> <label for="check"><span
                       class="icon"></span> Keep me Signed in</label> </div>
 
-                <div class="group"> <input type="submit" class="button" value="Sign In">
+                <div class="group"> <input type="submit" class="button" id="login-button" value="Sign In">
                 </div>
                 <div class="hr"></div>
                 <div class="foot"> <a href="#">Forgot Password?</a>
                 </div>
               </div>
 
-              <div class="sign-up-form">
-                <div class="group"> <label for="user" class="label">Firstname</label> <input id="user" type="text"
-                    class="input" placeholder="Enter your firstname"> </div>
+              <div id="signup" class="sign-up-form">
+                <div class="group"> <label for="user" class="label">Firstname</label> <input id="first-name"
+                    type=" text" class="input" placeholder="Enter your firstname"> </div>
 
-                <div class="group"> <label for="user" class="label">Lastname</label> <input id="user" type="text"
+                <div class="group"> <label for="user" class="label">Lastname</label> <input id="last-name" type="text"
                     class="input" placeholder="Enter your lastname"> </div>
 
-                <div class="group"> <label for="pass" class="label">Email Address</label> <input id="pass" type="text"
-                    class="input" placeholder="Enter your email address"> </div>
+                <div class="group"> <label for="pass" class="label">Email Address</label> <input id="signup-email"
+                    type="text" class="input" placeholder="Enter your email address"> </div>
 
-                <div class="group"> <label for="pass" class="label">Password</label> <input id="pass" type="password"
-                    class="input" data-type="password" placeholder="Create your password"> </div>
+                <div class="group"> <label for="pass" class="label">Password</label> <input id="signup-password"
+                    type="password" class="input" data-type="password" placeholder="Create your password"> </div>
 
-                <div class="group"> <input type="submit" class="button" value="Sign Up"> </div>
+                <div class="group"> <input type="submit" class="button" id="signup-button" value="Sign Up"> </div>
                 <div class="hr"></div>
                 <div class="foot"> <label for="tab-1">Already Member?</label> </div>
               </div>
@@ -65,7 +65,7 @@
     </div>
   </div>
 
-
+  <script src='./app.js'></script>
 </body>
 
 </html>
