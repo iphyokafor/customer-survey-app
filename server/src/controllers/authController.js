@@ -32,8 +32,6 @@ export default {
             password: hashedPassword,
         });
 
-
-       
             const _savedUser = await user.save();
             const token = jwt.sign({_id: user._id, role: user.role }, process.env.TOKEN_SECRET);
             res.json({
@@ -51,7 +49,7 @@ export default {
     },
 
     login: async(req, res) => {
-        try{
+        try {
       const { error } = loginValidation(req.body);
       if (error) return res.status(400).json({
           success: false,

@@ -4,7 +4,6 @@ const loginValidation = (data) => {
     const schema = Joi.object({
         email: Joi.string()
             .email({minDomainAtoms: 2})
-           
             .min(3)
             .max(100)
             .trim()
