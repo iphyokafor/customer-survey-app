@@ -31,12 +31,27 @@ body {
 
 }
 
+.h2 {
+  font-size: 50px;
+  text-transform: uppercase;
+  /* font-weight: 300px; */
+}
+
 #btn-style {
   background: rgba(0, 77, 77, .9);
   border-radius: 10px;
   font-family: Proxima Verdana, sans-serif;
   font-style: normal;
   font-weight: 0.5rem;
-  font-size: 16px;
+  font-size: 19px;
   width: 200px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#btn-style:hover {
+  transform: rotate(-7deg);
+  box-shadow: 0 0 0 0.1rem whitesmoke;
+  color: #fff;
+  background-color: orange;
 }
