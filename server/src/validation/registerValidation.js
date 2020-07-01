@@ -20,6 +20,11 @@ const registerValidation = (data) => {
             .max(100)
             .trim()
             .required(),
+        companyName: Joi.string()
+            .min(2)
+            .max(50)
+            .trim()
+            .lowercase(),
         password: Joi.string()
             .alphanum()
             .min(8)

@@ -29,6 +29,7 @@ export default {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
+            companyName: req.body.companyName,
             password: hashedPassword,
         });
 

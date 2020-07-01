@@ -8,8 +8,14 @@ const surveySchema = mongoose.Schema(
 			type: Schema.Types.ObjectId,
 			ref: 'User',
 		},
-		survey_question: String,
-		reply: String,
+		survey_question: {
+      type: String
+    },
+		reply: [
+      {
+      type: String,
+    }
+  ],
 	},
 	{ timestamps: true }
 );

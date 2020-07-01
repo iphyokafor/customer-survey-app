@@ -67,6 +67,7 @@ if (signupFormButton) {
     const lastName = document.querySelector('#last-name').value;
     const email = document.querySelector('#signup-email').value;
     const password = document.querySelector('#signup-password').value;
+    const companyName = document.querySelector('#company-name').value;
 
     fetch('http://localhost:7000/api/auth/register', {
       method: 'POST',
@@ -76,6 +77,7 @@ if (signupFormButton) {
         lastName,
         email,
         password,
+        companyName
         
       }),
       headers: {

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+const Schema = mongoose;
 const userSchema = mongoose.Schema({
     firstName: {
         type: String,
@@ -25,11 +26,23 @@ const userSchema = mongoose.Schema({
         min: 8,
         max: 1024
     },
+    companyName: {
+      type: String,
+      required: false,
+      min: 2,
+      max: 100
+  },
     role: {
       type: String,
       role: ['admin', 'customer'],
       default: 'customer'
-    }
+    },
+    // userResponse: [{
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'Feedback',
+    //   required: false
+    // }]
+
 }, { timestamps: true });
 
 userSchema.methods.toJSON =function () {
