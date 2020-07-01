@@ -33,7 +33,42 @@
           </li>
 
           <li class="nav-item">
-            <div class="box"><a href="login.html" class="nav-link login">Contact Us</a></div>
+            <!-- <div class="box"><a href="login.html" class="nav-link login">Contact Us</a></div> -->
+
+            <button class="btn btn-primary-modal" data-toggle="modal" data-target="#contactModal">Contact
+              Us</button>
+
+
+            <div class="modal fade" id="contactModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header text-dark">
+                    <h5 class="modal-title" id="contactModalTiltle">Contact Us</h5>
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                  </div>
+                  <div class="modal-body text-dark">
+                    <form>
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control"></textarea>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary-modal btn-block">Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </li>
 
           <li class="nav-item">
@@ -78,7 +113,7 @@
     </div>
 
   </header>
-
+  `
 
   <script src="./app.js"></script>
   <script src="./js/jquery.js"></script>

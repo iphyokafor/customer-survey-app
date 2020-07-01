@@ -47,7 +47,7 @@ nav header {
   background: rgba(1, 44, 44, 0.9);
 }
 
-nav header span {
+nav header span-header {
   position: relative;
   display: inline-block;
   width: 36px;
@@ -57,7 +57,7 @@ nav header span {
   border: 1px solid #fff;
 }
 
-nav header span:before {
+nav header span-header:before {
   content: '\f007';
   font: normal 20px FontAwesome;
   top: 7px;
