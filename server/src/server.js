@@ -25,6 +25,12 @@ mongoose.connect(
     });
 
 app.use(routes);
+// app.all('/*', (req, res, next) => {
+//     res.header('Access-Control-Allow_Origin', '*');
+//     res.header('Access-Control-Allow-Headers', 'X-Requested-Width');
+//     next();
+//   });
+  
 
 const port = process.env.PORT || 7000;
 app.listen(port, () => {

@@ -36,7 +36,7 @@ export default {
             const _savedUser = await user.save();
             const token = jwt.sign({_id: user._id, role: user.role }, process.env.TOKEN_SECRET);
             res.json({
-                success: true,
+                status: 200,
                 message: "User successfully registered",
                 _savedUser, 
                 token,
