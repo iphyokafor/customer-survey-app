@@ -29,7 +29,6 @@ if (adminDashboard) {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
 			allUsersCount.innerHTML = data.getUsers.length;
 		})
 		.catch((error) => {
@@ -54,7 +53,6 @@ if (adminDashboard) {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
 			surveyResponseCount.innerHTML = data.getFeedback.length;
 		})
 		.catch((error) => {
@@ -75,7 +73,6 @@ if (adminDashboard) {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
 			surveyQuestionsCount.innerHTML = data.getSurvey.length;
 		})
 		.catch((error) => {
@@ -254,4 +251,30 @@ if (allUsers) {
 				}, 5000);
 			});
 	});
+}
+
+const takeSurvey = document.querySelector('#survey');
+if (takeSurvey) {
+	// takeSurvey.addEventListener('click', (e) => {
+	// 	console.log(takeSurvey);
+	// 	e.preventDefault();
+	// });
+
+	fetch('http://localhost:7000/survey', {
+		method: 'GET',
+		withCredentials: true,
+		mode: 'cors',
+		headers: {},
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+		})
+		.catch((error) => {
+			document.querySelector('.error').innerHTML = '<h2>server error</h2>';
+			document.querySelector('.error').innerHTML = `<h3>${error}</h3>`;
+			setTimeout(() => {
+				window.location.replace('userDashboard.html');
+			}, 5000);
+		});
 }

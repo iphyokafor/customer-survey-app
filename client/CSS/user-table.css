@@ -2,10 +2,12 @@
 
   * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   body {
-    background-color: #1c223b;
+    background-color: rgba(1, 48, 48, 0.9);
     font-family: 'Source Sans Pro', sans-serif;
     display: flex;
     align-items: center;
@@ -14,10 +16,9 @@
     margin: 0;
   }
 
-  .container {
-    background-color: #273349;
+  .table-box {
     border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(12, 16, 31, 0.4);
+    box-shadow: 0 5px 10px rgba(12, 16, 31, 0.9);
     padding: 100px;
     margin: auto;
     max-width: 100%;
@@ -36,6 +37,12 @@
     font-weight: bold;
   }
 
+  .login {
+    color: #fff;
+    font-weight: 600px;
+    font-size: 20px;
+  }
+
   table th,
   table td {
     padding: 15px;
@@ -43,11 +50,11 @@
   }
 
   table tbody tr {
-    background-color: #1c223b;
+    background-color: rgba(1, 48, 48, 0.9);
   }
 
   table tbody tr:hover {
-    background-color: #151b31;
+    background-color: #072727;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   }
 

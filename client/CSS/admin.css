@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 @import url('http://weloveiconfonts.com/api/?family=fontawesome');
 
-/* @rgba(0, 77, 77, .9): #3b4854;
-@blue-d: darken(@blue, 5%);
-light blue: lighten(@blue, 5%); */
-
 * {
   margin: 0;
   padding: 0;
@@ -28,7 +24,8 @@ body {
   color: #777;
 }
 
-a {
+a,
+.a-link {
   cursor: pointer;
 }
 
@@ -126,10 +123,10 @@ nav ul li:nth-child(8) a:before {
   content: '\f085';
 }
 
-/* nav ul li:nth-child(9) a:before {
-  content: '\f085';
-} */
-
+.a-link {
+  text-decoration: none;
+  color: #fff;
+}
 
 main {
   flex: 1;

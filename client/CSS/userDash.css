@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 @import url('http://weloveiconfonts.com/api/?family=fontawesome');
 
-/* @rgba(0, 77, 77, .9): #3b4854;
-@blue-d: darken(@blue, 5%);
-light blue: lighten(@blue, 5%); */
-
 * {
   margin: 0;
   padding: 0;
@@ -126,10 +122,6 @@ nav ul li:nth-child(8) a:before {
   content: '\f085';
 }
 
-/* nav ul li:nth-child(9) a:before {
-  content: '\f085';
-} */
-
 .fa,
 .fas {
   font-weight: 900;
@@ -171,7 +163,6 @@ p {
   flex: 1;
   margin: 0 20px 20px 0;
   border: 1px solid #ddd;
-  /* background: #fff; */
 }
 
 .flex-grid div:last-child {
