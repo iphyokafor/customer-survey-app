@@ -25,7 +25,7 @@ export default {
 
   getAllFeedback: async(req, res) => {
       try {
-          const getFeedback = await Feedback.find({}).populate('customer').sort({createdAt: -1});
+          const getFeedback = await Feedback.find({}).sort({createdAt: -1});
           return res.json({
               success: true,
               message: 'View all  Feedback responses',

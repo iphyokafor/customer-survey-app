@@ -33,7 +33,7 @@
     </div>
   </nav>
 
-  <div>
+  <div class="table-box">
     <table>
       <h1 class="h2 text-center mb-5">Registerd Users</h1>
       <thead>
@@ -43,88 +43,17 @@
           <th>Lastname</th>
           <th>Company name</th>
           <th>Email</th>
-          <td>Created date</td>
+          <td id="createdAt">Created date</td>
           <th></th>
         </tr>
       </thead>
 
-      <tbody>
-        <tr class="row-1">
-          <td>1</td>
-          <td>Ify</td>
-          <td>
-            Okafor
-          </td>
-          <td>Ify's Bakery</td>
-          <td>
-            anitaokafor22@gmail.com
-          </td>
-          <td>2020-06-30T19:54:19.052Z</td>
-          <td>
-            <button class="delete"><i class="fas fa-trash"></i></button>
-          </td>
-        </tr>
-
-        <tr class="row-2">
-          <td>2</td>
-          <td>Jayden</td>
-          <td>
-            Johnson
-          </td>
-          <td>JJAy enterprise</td>
-          <td>jjay@gmail.com</td>
-          <td>2020-06-30T19:54:19.052Z</td>
-          <td>
-            <button class="delete"><i class="fas fa-trash"></i></button>
-          </td>
-        </tr>
-
-        <tr class="row-3">
-          <td>3</td>
-          <td>Mercy</td>
-          <td>
-            Megan
-          </td>
-          <td>Meg enterprise</td>
-          <td>mercymeg@gmail.com</td>
-          <td>2020-06-30T19:54:19.052Z</td>
-          <td>
-            <button class="delete"><i class="fas fa-trash"></i></button>
-          </td>
-        </tr>
-
-        <tr class="row-1">
-          <td>3</td>
-          <td>Luke</td>
-          <td>
-            Megan
-          </td>
-          <td>Luke electronics</td>
-          <td>Lukemeg@gmail.com</td>
-          <td>2020-06-30T19:54:19.052Z</td>
-          <td>
-            <button class="delete"><i class="fas fa-trash"></i></button>
-          </td>
-        </tr>
-
-        <tr class="row-3">
-          <td>4</td>
-          <td>Sandie</td>
-          <td>
-            Okafor
-          </td>
-          <td>Sandies Culinary</td>
-          <td>sandraifeoma22@gmail.com</td>
-          <td>2020-06-30T19:54:19.052Z</td>
-          <td>
-            <button class="delete"><i class="fas fa-trash"></i></button>
-          </td>
-        </tr>
+      <tbody id="users-table-body">
       </tbody>
     </table>
   </div>
 
-  <script src="./app.js"></script>
+  <script type="module" src="./app.js"></script>
   <script src="./js/jquery.js"></script>
   <script src="./js/bootstrap.js"></script>
 </body>

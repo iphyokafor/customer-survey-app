@@ -3,10 +3,93 @@
 //load dashboard
 
 // SELECTORS
+const loginFormButton = document.querySelector('#login-button');
+const signupFormButton = document.querySelector('#signup-button');
 const adminDashboard = document.querySelector('#admin-dashboard');
 const dashboard = document.querySelector('#dashboard');
 const userName = document.querySelector('#span-username');
 const adminUsername = document.querySelector('#admin-username');
+const surveyResponseCount = document.querySelector('#survey-response-count');
+const allUsersCount = document.querySelector('#users-count');
+const surveyQuestionsCount = document.querySelector('#survey-question-count');
+const surveyTableBody = document.querySelector('#survey-table-body');
+const usersTableBody = document.querySelector('#users-table-body');
+
+// FUNCTIONS
+const userAuth = () => {
+	if (window.localStorage.role === 'admin') {
+		window.location.replace('adminDashboard.html');
+	} else {
+		window.location.replace('userDashboard.html');
+	}
+};
+
+if (surveyTableBody) {
+	fetch('http://localhost:7000/feedback', {
+		method: 'GET',
+		withCredentials: true,
+		mode: 'cors',
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			'auth-token': `${window.localStorage.token}`,
+		},
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			if (data.success === true) {
+				let output;
+				const loadSurveyData = data.getFeedback.forEach((feedback) => {
+					output += `
+  <tr>
+  <td>${feedback._id}</td>
+  <td>${feedback.customer}</td>
+	<td>${feedback.surveyId}</td>
+	<td>${feedback.customerReply}</td>
+  <td>${new Date(feedback.createdAt).toLocaleDateString()}</td>
+  </tr>
+  `;
+				});
+				surveyTableBody.innerHTML = output;
+			}
+		});
+}
+
+
+
+if (usersTableBody) {
+	fetch('http://localhost:7000/users', {
+		method: 'GET',
+		withCredentials: true,
+		mode: 'cors',
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			'auth-token': `${window.localStorage.token}`,
+		},
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			if (data.success === true) {
+				let output;
+				const loadUsersData = data.getUsers.forEach((user) => {
+					output += `
+  <tr>
+  <td>${user._id}</td>
+  <td>${user.firstName}</td>
+	<td>${user.lastName}</td>
+	<td>${user.companyName}</td>
+  <td>${user.email}</td>
+  <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+  </tr>
+  `;
+				});
+				usersTableBody.innerHTML = output;
+			}
+		});
+}
 
 if (dashboard) {
 	userName.innerHTML = `${window.localStorage.name}`;
@@ -14,8 +97,6 @@ if (dashboard) {
 
 if (adminDashboard) {
 	adminUsername.innerHTML = `${window.localStorage.name}`;
-
-	const allUsersCount = document.querySelector('#users-count');
 
 	fetch('http://localhost:7000/users', {
 		method: 'GET',
@@ -39,8 +120,6 @@ if (adminDashboard) {
 			}, 5000);
 		});
 
-	const surveyResponseCount = document.querySelector('#survey-response-count');
-
 	fetch('http://localhost:7000/feedback', {
 		method: 'GET',
 		withCredentials: true,
@@ -63,8 +142,6 @@ if (adminDashboard) {
 			}, 5000);
 		});
 
-	const surveyQuestionsCount = document.querySelector('#survey-question-count');
-
 	fetch('http://localhost:7000/survey', {
 		method: 'GET',
 		withCredentials: true,
@@ -84,17 +161,7 @@ if (adminDashboard) {
 		});
 }
 
-// FUNCTIONS
-const userAuth = () => {
-	if (window.localStorage.role === 'admin') {
-		window.location.replace('adminDashboard.html');
-	} else {
-		window.location.replace('userDashboard.html');
-	}
-};
-
 // LOGIN FUNCTIONALITY
-const loginFormButton = document.querySelector('#login-button');
 if (loginFormButton) {
 	loginFormButton.addEventListener('click', (e) => {
 		e.preventDefault();
@@ -142,12 +209,10 @@ if (loginFormButton) {
 }
 
 // SIGNUP FUNCTIONALITY
-const signupFormButton = document.querySelector('#signup-button');
 if (signupFormButton) {
 	signupFormButton.addEventListener('click', (e) => {
 		e.preventDefault();
 		const firstName = document.querySelector('#first-name').value;
-		console.log(firstName);
 		const lastName = document.querySelector('#last-name').value;
 		const email = document.querySelector('#signup-email').value;
 		const password = document.querySelector('#signup-password').value;
@@ -179,7 +244,6 @@ if (signupFormButton) {
 						userAuth();
 					}, 2000);
 				} else {
-					// console.log("can't go");
 					let output = Object.keys(data).forEach((key) => {
 						output += `<p>${data[key]}<p/>`;
 					});
@@ -191,7 +255,6 @@ if (signupFormButton) {
 				}
 			})
 			.catch((error) => {
-				// console.log(error);
 				document.querySelector('.error').innerHTML = '<h2>server error</h2>';
 				document.querySelector('.error').innerHTML = `<h3>${error}</h3>`;
 				setTimeout(() => {
@@ -199,82 +262,4 @@ if (signupFormButton) {
 				}, 5000);
 			});
 	});
-}
-
-// DISPLAY ALL USERS
-const allUsers = document.querySelector('#users');
-if (allUsers) {
-	allUsers.addEventListener('click', (e) => {
-		console.log(allUsers);
-		e.preventDefault();
-
-		fetch('http://localhost:7000/users', {
-			method: 'GET',
-			withCredentials: true,
-			// credentials:'include',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				'auth-token': `${window.localStorage.token}`,
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-				// 	if (data.status === 200) {
-				// 		window.localStorage.token = data.token;
-				// 		window.localStorage.role = data._savedUser.role;
-				// 		window.localStorage.user = data._savedUser._id;
-				// 		window.localStorage.name = `${data._savedUser.firstName} ${data._savedUser.lastName}`;
-				// 		setTimeout(() => {
-				//       userAuth();
-				// 		}, 2000);
-				// 	} else {
-				// 		// console.log("can't go");
-				// 		let output = Object.keys(data).forEach((key) => {
-				// 			output += `<p>${data[key]}<p/>`;
-				// 		});
-				// 		document.querySelector('.error').innerHTML = output;
-				// 		document.querySelector('.error').style.display = 'block';
-				// 		setTimeout(() => {
-				// 			window.location.replace('signup.html');
-				// 		}, 5000);
-				// 	}
-			})
-			.catch((error) => {
-				// console.log(error);
-				document.querySelector('.error').innerHTML = '<h2>server error</h2>';
-				document.querySelector('.error').innerHTML = `<h3>${error}</h3>`;
-				setTimeout(() => {
-					window.location.replace('signup.html');
-				}, 5000);
-			});
-	});
-}
-
-const takeSurvey = document.querySelector('#survey');
-if (takeSurvey) {
-	// takeSurvey.addEventListener('click', (e) => {
-	// 	console.log(takeSurvey);
-	// 	e.preventDefault();
-	// });
-
-	fetch('http://localhost:7000/survey', {
-		method: 'GET',
-		withCredentials: true,
-		mode: 'cors',
-		headers: {},
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-		})
-		.catch((error) => {
-			document.querySelector('.error').innerHTML = '<h2>server error</h2>';
-			document.querySelector('.error').innerHTML = `<h3>${error}</h3>`;
-			setTimeout(() => {
-				window.location.replace('userDashboard.html');
-			}, 5000);
-		});
 }
